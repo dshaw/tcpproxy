@@ -16,8 +16,8 @@ Do you really need this module? Perhaps you don't. Much of this module can be ac
 
 ## Usage
 
-  var proxy = require('tcpproxy')
-
+	var proxy = require('tcpproxy')
+	
 	proxy(8080, 9000)
 	proxy(127.0.0.1:8080, 127.0.0.1:9000)
 	proxy(localhost:8080, localhost:9000)
