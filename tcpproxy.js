@@ -14,24 +14,16 @@ var net = require('net')
  * Exports.
  */
 
-module.exports = function createProxy (source, destination, proxyListening, clientListening) {
-  return new Proxy(source, destination, proxyListening, clientListening)
-}
-
-/**
- * Proxy.
- */
-
-function Proxy (source, destination, proxyListening, clientListening) {
-  var self = this
-  this.source = parse(source)
-  this.destination = parse(destination)
-  this.proxy = net.createServer(function (connection) {
-    var client = net.connect(self.destination.port, self.destination.address, clientListening);
+module.exports = function createProxy (source, destination, listeningListener, connectListener) {
+  source = parse(source)
+  destination = parse(destination)
+  var proxy = net.createServer(function (connection) {
+      var client = net.connect(destination.port, destination.address, connectListener);
     connection.pipe(client)
     client.pipe(connection)
   })
-  this.proxy.listen(this.source.port, this.source.address, proxyListening)
+  proxy.listen(source.port, source.address, listeningListener)
+  return proxy
 }
 
 // From node net
