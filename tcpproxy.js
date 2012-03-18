@@ -18,7 +18,7 @@ module.exports = function createProxy (source, destination, listeningListener, c
   source = parse(source)
   destination = parse(destination)
   var proxy = net.createServer(function (connection) {
-      var client = net.connect(destination.port, destination.address, connectListener);
+    var client = net.connect(destination.port, destination.address, connectListener);
     connection.pipe(client)
     client.pipe(connection)
   })
