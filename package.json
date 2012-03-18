@@ -1,0 +1,9 @@
+{
+    "name": "tcpproxy"
+  , "version": "0.1.0"
+  , "description": "TCP Proxy"
+  , "keywords": ["tcp", "net", "proxy", "tcp-proxy"]
+  , "author": "Daniel D. Shaw <dshaw@dshaw.com> (http://dshaw.com)"
+  , "dependencies": {}
+  , "main": "index"
+}
